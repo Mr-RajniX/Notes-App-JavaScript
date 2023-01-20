@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400;700&display=swap");
+
+* {
+  background-color: black;
+  color: rgb(214, 124, 13);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+.title{
+  text-shadow: 0 4px 2px rgba(126, 124, 124, 0.548);
+}
+
+::selection {
+  color: #fff;
+  background: #618cf8;
+}
+.wrap {
+  margin: 50px;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fill, 265px);
+}
+.wrap li {
+  height: 250px;
+  list-style: none;
+  border-radius: 5px;
+  padding: 15px 20px 20px;
+  box-shadow: 0 4px 8px rgb(248, 248, 248);
+}
+.add_box,
+.icon,
+.bottom-content,
+.settings .menu li,
+.popup,
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add_box {
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+.add_box .icon {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  font-size: 40px;
+  justify-content: center;
+  border: 2px dashed black;
+}
+.add_box p {
+  font-weight: 500;
+  margin-top: 20px;
+}
+.wrap .note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.note .details {
+  max-height: 165px;
+  overflow-y: auto;
+}
+.note .details::-webkit-scrollbar,
+.popup textarea::-webkit-scrollbar {
+  width: 0;
+}
+.note .details:hover::-webkit-scrollbar,
+.popup textarea:hover::-webkit-scrollbar {
+  width: 5px;
+}
+.note .details:hover::-webkit-scrollbar-track,
+.popup textarea:hover::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+.note .details:hover::-webkit-scrollbar-thumb,
+.popup textarea:hover::-webkit-scrollbar-thumb {
+  background: #e6e6e6;
+  border-radius: 25px;
+}
+.note p {
+  font-size: 22px;
+  font-weight: 500;
+}
+.note span {
+  display: block;
+  margin-top: 5px;
+  color: rgb(78, 80, 80);
+  font-size: 16px;
+}
+.note .bottom-content {
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+.bottom-content span {
+  color: #6d6d6d;
+  font-size: 14px;
+}
+.bottom-content .settings {
+  position: relative;
+}
+.bottom-content .settings i {
+  color:rgba(95, 59, 14, 0.904);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.settings .menu {
+  z-index: 1;
+  bottom: 0;
+  right: -5px;
+  padding: 5px 0;
+  border: 1px solid rgba(95, 59, 14, 0.904);
+  position: absolute;
+  border-radius: 4px;
+  transform: scale(0);
+  transform-origin: bottom right;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+.settings.show .menu {
+  transform: scale(1);
+}
+.settings .menu li {
+  height: 25px;
+  font-size: 16px;
+  margin-bottom: 2px;
+  padding: 17px 15px;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 0;
+  justify-content: flex-start;
+}
+.menu li:last-child {
+  margin-bottom: 0;
+}
+.menu li:hover {
+  background: bisque;
+}
+.menu li i {
+  padding-right: 8px;
+}
+
+.popup-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.4);
+}
+.popup-box .popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  max-width: 400px;
+  width: 100%;
+  justify-content: center;
+  transform: translate(-50%, -50%) scale(0.95);
+}
+.popup-box,
+.popup-box .popup {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+.popup-box.show,
+.popup-box.show .popup {
+  opacity: 1;
+  pointer-events: auto;
+}
+.popup-box.show .popup {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup .content {
+  width: calc(100% - 15px);
+  border-radius: 7px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.content header {
+  padding: 15px 25px;
+  border-bottom: 1px solid #ccc;
+}
+.content header p {
+  font-weight: 500;
+  font-size: 20px;
+}
+.content header i {
+  color: #8b8989;
+  cursor: pointer;
+  font-size: 23px;
+}
+.content form {
+  margin: 15px 25px 35px;
+}
+.content form .row {
+  margin-bottom: 20px;
+}
+form .row label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+form :where(input, textarea) {
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  padding: 0 15px;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid #999;
+}
+form :where(input, textarea):focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11);
+}
+form .row textarea {
+  height: 150px;
+  resize: none;
+  padding: 8px 15px;
+  font-family: "Ubuntu Mono", monospace;
+}
+form button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: wheat;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 36px;
+  background-color: rgba(95, 59, 14, 0.904);
+}
+@media (max-width: 660px) {
+  .wrapper {
+    margin: 15px;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+  .popup-box .popup {
+    max-width: calc(100% - 15px);
+  }
+  .bottom-content .settings i {
+    font-size: 17px;
+  }
+}
